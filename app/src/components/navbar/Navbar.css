@@ -1,0 +1,85 @@
+@import "../../App.css";
+
+.navbar {
+  z-index: 99;
+  color: white;
+  font-size: 15px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.2) 50%);
+}
+
+.navbar-scrolled {
+  background-color: var(--main-color);
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 40px 0px 10px;
+  height: 60px;
+}
+
+span {
+  color: white;
+}
+
+.container-left {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.link > span {
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.logo {
+  cursor: pointer;
+  height: 40px;
+  padding-right: 20px;
+}
+
+.container-right {
+  display: flex;
+  align-items: center;
+}
+
+.options {
+  display: none;
+  background-color: var(--main-color);
+  border-radius: 5px;
+}
+
+.options > span {
+  cursor: pointer;
+  padding: 5px;
+}
+
+.profile:hover {
+  .options {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+  }
+}
+
+.profile-picture {
+  object-fit: cover;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.icons {
+  cursor: pointer;
+  margin: 0px 10px;
+}
