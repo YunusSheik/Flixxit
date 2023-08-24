@@ -11,8 +11,8 @@ export default function Register() {
   const [username, setUsername] = useState("");
 
   const emailRef = useRef();
-  const passwordRef = useRef();
-  const usernameRef = useRef();
+  // const passwordRef = useRef();
+  // const usernameRef = useRef();
   const navigate = useNavigate();
 
   const handleStart = () => {
@@ -20,8 +20,8 @@ export default function Register() {
   };
   const handleFinish = async (e) => {
     e.preventDefault();
-    setPassword(passwordRef.current.value);
-    setUsername(usernameRef.current.value);
+    // setPassword(passwordRef.current.value);
+    // setUsername(usernameRef.current.value);
 
     try {
       await axios.post("auth/register", { email, password, username });
@@ -56,8 +56,22 @@ export default function Register() {
           </div>
         ) : (
           <form className="input">
-            <input type="username" placeholder="User Name" ref={usernameRef} />
-            <input type="password" placeholder="Password" ref={passwordRef} />
+            <input
+              type="username"
+              placeholder="User Name"
+              // ref={usernameRef}
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              // ref={passwordRef}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
             <button className="register-button" onClick={handleFinish}>
               Register
             </button>

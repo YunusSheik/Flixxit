@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./ListItemsMain.css";
 import {
   Add,
@@ -8,20 +8,32 @@ import {
   StarBorderRounded,
   Close,
 } from "@mui/icons-material";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../authContext/AuthContext";
+import { useDispatch } from "react-redux";
+import { removeMovieFromLiked } from "../../store";
 
-export default function ListItemsMain({ movieData, isLiked = false }) {
+export default React.memo(function ListItemsMain({
+  movieData,
+  isLiked = false,
+}) {
   const [isHovered, setIsHovered] = useState(false);
   const { user } = useContext(AuthContext);
+  const dispatch = useDispatch();
 
   const addToList = async () => {
     try {
-      await axios.post("http://localhost:6000/api/users", {
-        email: user.email,
-        data: movieData,
-      });
+      await axios.post(
+        "http://localhost:8000/api/users/add",
+        { email: user.email, data: movieData },
+        {
+          headers: {
+            token:
+              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+          },
+        }
+      );
     } catch (err) {
       console.log(err);
     }
@@ -54,7 +66,17 @@ export default function ListItemsMain({ movieData, isLiked = false }) {
                 <ThumbUpOffAlt className="item-icon" />
                 <ThumbDownOffAlt className="item-icon" />
                 {isLiked ? (
-                  <Close title="Remove from List" />
+                  <Close
+                    title="Remove from List"
+                    onClick={() =>
+                      dispatch(
+                        removeMovieFromLiked({
+                          movieId: movieData.id,
+                          email: user.email,
+                        })
+                      )
+                    }
+                  />
                 ) : (
                   <Add className="item-icon" onClick={addToList} />
                 )}
@@ -87,4 +109,4 @@ export default function ListItemsMain({ movieData, isLiked = false }) {
       )}
     </div>
   );
-}
+});

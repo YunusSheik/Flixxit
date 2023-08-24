@@ -33,7 +33,7 @@ import {
 //         {
 //           headers: {
 //             token:
-//               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZDBjZDdhMjdmNThlOTBmNjdmNGQ4OSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MjE2MTE2MCwiZXhwIjoxNjkyNzY1OTYwfQ.o0vlALohBdtMvvSnPWgIAi-9SwopPCOOOScuKIgoLmI",
+//               "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
 //           },
 //         }
 //       );
@@ -82,7 +82,8 @@ export default function Home({ type }) {
           {
             headers: {
               token:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZDBjZDdhMjdmNThlOTBmNjdmNGQ4OSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MjE2MTE2MCwiZXhwIjoxNjkyNzY1OTYwfQ.o0vlALohBdtMvvSnPWgIAi-9SwopPCOOOScuKIgoLmI",
+                "Bearer " +
+                JSON.parse(localStorage.getItem("user")).accessToken,
             },
           }
         );

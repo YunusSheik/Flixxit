@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import "./ListItems.css";
 import {
   Add,
@@ -6,13 +6,16 @@ import {
   ThumbUpOffAlt,
   ThumbDownOffAlt,
   StarBorderRounded,
+  Close,
 } from "@mui/icons-material";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../authContext/AuthContext";
 
-export default function ListItems({ item }) {
+export default React.memo(function ListItems({ item, isLiked = false }) {
   const [isHovered, setIsHovered] = useState(false);
   const [movie, setMovie] = useState({});
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const getMovie = async () => {
@@ -20,7 +23,7 @@ export default function ListItems({ item }) {
         const res = await axios.get("/movies/find/" + item, {
           headers: {
             token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZDBjZDdhMjdmNThlOTBmNjdmNGQ4OSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MjE2MTE2MCwiZXhwIjoxNjkyNzY1OTYwfQ.o0vlALohBdtMvvSnPWgIAi-9SwopPCOOOScuKIgoLmI",
+              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
           },
         });
         setMovie(res.data);
@@ -30,6 +33,23 @@ export default function ListItems({ item }) {
     };
     getMovie();
   }, [item]);
+
+  const addToList = async () => {
+    try {
+      await axios.post(
+        "http://localhost:8000/api/users/add",
+        { email: user.email, data: movie },
+        {
+          headers: {
+            token:
+              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+          },
+        }
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   if (movie !== null) {
     return (
@@ -97,7 +117,11 @@ export default function ListItems({ item }) {
                   </Link>
                   <ThumbUpOffAlt className="item-icon" />
                   <ThumbDownOffAlt className="item-icon" />
-                  <Add className="item-icon" />
+                  {isLiked ? (
+                    <Close title="Remove from List" />
+                  ) : (
+                    <Add className="item-icon" onClick={addToList} />
+                  )}
                 </div>
                 <div className="item-duration">
                   <span>{movie.duration}</span>
@@ -124,4 +148,4 @@ export default function ListItems({ item }) {
       </div>
     );
   }
-}
+});
