@@ -42,14 +42,21 @@ export default function Register() {
         </div>
       </div>
       <div className="description">
-        <h1>Watch unlimited Movies, Series and more.</h1>
-        <h2>Binge exclusive content!</h2>
-        <h3>
+        <h1 className="signup-header1">
+          Watch unlimited Movies, Series and more.
+        </h1>
+        <h2 className="signup-header2">Binge exclusive content!</h2>
+        <h3 className="signup-header3">
           Ready to join? Enter your email to create or restart membership.
         </h3>
         {!email ? (
-          <div className="input">
-            <input type="email" placeholder="Email Address" ref={emailRef} />
+          <div className="signup-input">
+            <input
+              className="input-field"
+              type="email"
+              placeholder="Email Address"
+              ref={emailRef}
+            />
             <button className="register-button" onClick={handleStart}>
               Sign Up
             </button>
@@ -57,6 +64,7 @@ export default function Register() {
         ) : (
           <form className="input">
             <input
+              className="input-field"
               type="username"
               placeholder="User Name"
               // ref={usernameRef}
@@ -65,6 +73,7 @@ export default function Register() {
               }}
             />
             <input
+              className="input-field"
               type="password"
               placeholder="Password"
               // ref={passwordRef}

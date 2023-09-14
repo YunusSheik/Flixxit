@@ -58,7 +58,7 @@ span {
   border-radius: 5px;
 }
 
-.options > span {
+.drop-down-list {
   cursor: pointer;
   padding: 5px;
 }

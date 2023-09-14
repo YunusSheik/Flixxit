@@ -1,10 +1,10 @@
 @import "../../App.css";
 
-.featured {
+.upcoming-featured {
   height: 85vh;
   position: relative;
 }
-.category {
+.upcoming-category {
   position: absolute;
   top: 80px;
   left: 50px;
@@ -28,13 +28,13 @@ select {
   z-index: 2;
 }
 
-.featured > img {
+.upcoming-featured > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.info {
+.upcoming-info {
   width: 35%;
   position: absolute;
   left: 50px;
@@ -43,23 +43,23 @@ select {
   display: flex;
   flex-direction: column;
 }
-.info > img {
+.upcoming-info > img {
   width: 100%;
   height: 80px;
   /* margin-top: 100px; */
 }
 
-.desc {
+.upcoming-desc {
   margin: 20px 0px;
 }
 /* @include mobile {
   width: 60vw;
 } */
 
-.buttons {
+.upcoming-buttons {
   display: flex;
 }
-button {
+.upcoming {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -81,6 +81,10 @@ button {
   color: white;
 }
 
-span {
+.upcoming-span {
   margin-left: 5px;
+}
+
+.play-button {
+  color: black;
 }

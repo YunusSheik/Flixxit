@@ -26,11 +26,11 @@ export default function FlixxitMovies({ movies }) {
   };
 
   return (
-    <div className="content-list">
-      <span className="list-titles">Flixxit Movies</span>
-      <div className="slides">
+    <div className="content-list-page">
+      <span className="content-list-titles">Flixxit Movies</span>
+      <div className="content-list-slides">
         <ArrowBackIos
-          className="slider-arrow left"
+          className="content-list-slider-arrow-left"
           onClick={() => handleClick("left")}
           style={{ display: !isMoved && "none" }}
         />
@@ -43,7 +43,7 @@ export default function FlixxitMovies({ movies }) {
         )}
 
         <ArrowForwardIos
-          className="slider-arrow right"
+          className="content-list-slider-arrow-right"
           onClick={() => handleClick("right")}
         />
       </div>

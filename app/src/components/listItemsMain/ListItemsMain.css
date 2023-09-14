@@ -1,4 +1,4 @@
-.list-item {
+.list-item-page {
   background-color: var(--main-color);
   max-width: 230px;
   width: 230px;
@@ -9,7 +9,7 @@
   margin-right: 5px;
 }
 
-.list-item > img {
+.list-item-img {
   border-radius: 3px;
   width: 100%;
   height: 100%;
@@ -17,7 +17,7 @@
   object-fit: cover;
 }
 
-.hover {
+.list-item-hover {
   z-index: 90;
   height: 320px;
   width: 330px;
@@ -30,11 +30,11 @@
   transition: 0.3s ease-in-out;
 }
 
-.item-video-image {
+.list-item-video-image {
   position: relative;
   height: 150px;
 }
-.item-video-image > img {
+.list-item-hovered-img {
   width: 100%;
   height: 150px;
   object-fit: cover;
@@ -45,7 +45,7 @@
   position: absolute;
 }
 
-.item-video-image > video {
+.list-item-video {
   width: 100%;
   height: 150px;
   object-fit: cover;
@@ -54,13 +54,13 @@
   left: 0;
 }
 
-.item-stats {
+.list-item-stats {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.item-icons {
+.list-item-icons {
   display: flex;
   margin: 10px 5px 0px 5px;
   gap: 10px;
@@ -68,39 +68,43 @@
   transition: 0.3s ease-in-out;
 }
 
-.item-icon:hover {
+.list-item-icon {
+  color: white;
+}
+
+.list-item-icon:hover {
   color: #b8b8b8;
 }
 
-.item-duration {
+.list-item-duration {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.item-rating {
+.list-item-rating {
   display: flex;
   align-items: center;
   margin: 5px 15px 0px 5px;
   font-size: 15px;
 }
 
-.item-duration > span {
+/* .item-duration > span {
   margin-right: 5px;
   margin-top: 5px;
   font-size: 12px;
-}
+} */
 
-.item-details {
+.list-item-details {
   font-size: 13px;
 }
 
-.item-name {
-  font-size: 20px;
+.list-item-name {
+  font-size: 16px;
   margin: 10px 5px;
 }
 
-.genres {
+.list-item-genres {
   display: flex;
   justify-content: flex-start;
   margin-right: 10px;
@@ -108,7 +112,7 @@
   font-size: 12px;
 }
 
-.genre-list {
+.list-item-genre-list {
   margin: 0px 5px;
   padding-left: 17px;
 }
@@ -121,24 +125,26 @@ li {
   padding-right: 0.7rem;
 }
 
-.item-age-limit {
+.list-item-age-limit {
   border: 1px solid gray;
   padding: 1px 3px;
 }
 
-.item-year {
+.list-item-year {
   margin-left: 10px;
 }
 
-.item-description {
+.list-item-description {
   color: white;
   margin: 8px 5px;
   width: 100%;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
   display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
   font-size: 12px;
+  text-align: justify;
 }
 
 .spinner {

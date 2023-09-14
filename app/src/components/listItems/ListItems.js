@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
-import "./ListItems.css";
+import "../listItemsMain/ListItemsMain.css";
 import {
   Add,
   PlayCircleOutline,
@@ -12,6 +12,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../authContext/AuthContext";
 
+//  LISTITEMS - to span item-card for admin added movies
 export default React.memo(function ListItems({ item, isLiked = false }) {
   const [isHovered, setIsHovered] = useState(false);
   const [movie, setMovie] = useState({});
@@ -53,94 +54,57 @@ export default React.memo(function ListItems({ item, isLiked = false }) {
 
   if (movie !== null) {
     return (
-      // <div
-      //   className="list-item"
-      //   onMouseEnter={() => setIsHovered(true)}
-      //   onMouseLeave={() => setIsHovered(false)}
-      // >
-      //   <img src={movie.img} alt="img" />
-      //   {isHovered && (
-      //     <div className="hover">
-      //       <div className="item-video-image">
-      //         <video src={movie.trailer} autoPlay={true} loop muted />
-      //       </div>
-      //       <div className="item-info">
-      //         <div className="item-stats">
-      //           <div className="item-icons">
-      //             <Link to="/play" state={{ movie }}>
-      //               <PlayCircleOutline className="item-icon" />
-      //             </Link>
-      //             <ThumbUpOffAlt className="item-icon" />
-      //             <ThumbDownOffAlt className="item-icon" />
-      //             <Add className="item-icon" />
-      //           </div>
-      //           <div className="item-duration">
-      //             <span>{movie.duration}</span>
-      //             <div className="item-rating">
-      //               {movie.rating}
-      //               <StarBorderRounded style={{}} />
-      //             </div>
-      //           </div>
-      //         </div>
-      //         <div className="item-details">
-      //           <h3 className="item-name">{movie.title}</h3>
-      //           <div className="genres">
-      //             <ul className="genre-list">
-      //               <li>{movie.genre}</li>
-      //             </ul>
-      //             <span className="item-age-limit">{movie.ageLimit}+</span>
-      //             <span className="item-year">{movie.year}</span>
-      //           </div>
-      //           <div className="item-description">{movie.description}</div>
-      //         </div>
-      //       </div>
-      //     </div>
-      //   )}
-      // </div>
-
       <div
-        className="list-item"
+        className="list-item-page"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <img src={movie.img} alt="img" />
+        <img className="list-item-img" src={movie.img} alt="img" />
         {isHovered && (
-          <div className="hover">
-            <div className="item-video-image">
-              <video src={movie.trailer} autoPlay={true} loop muted />
+          <div className="list-item-hover">
+            <div className="list-item-video-image">
+              <video
+                className="list-item-video"
+                src={movie.trailer}
+                autoPlay={true}
+                loop
+                muted
+              />
             </div>
-            <div className="item-info">
-              <div className="item-stats">
-                <div className="item-icons">
+            <div className="list-item-info">
+              <div className="list-item-stats">
+                <div className="list-item-icons">
                   <Link to="/play" state={{ movie }}>
-                    <PlayCircleOutline className="item-icon" />
+                    <PlayCircleOutline className="list-item-icon" />
                   </Link>
-                  <ThumbUpOffAlt className="item-icon" />
-                  <ThumbDownOffAlt className="item-icon" />
+                  <ThumbUpOffAlt className="list-item-icon" />
+                  <ThumbDownOffAlt className="list-item-icon" />
                   {isLiked ? (
                     <Close title="Remove from List" />
                   ) : (
-                    <Add className="item-icon" onClick={addToList} />
+                    <Add className="list-item-icon" onClick={addToList} />
                   )}
                 </div>
-                <div className="item-duration">
-                  <span>{movie.duration}</span>
-                  <div className="item-rating">
+                <div className="list-item-duration">
+                  {/* <span className="list-item-movie-duration">
+                    {movie.duration}
+                  </span> */}
+                  <div className="list-item-rating">
                     {movie.rating}
                     <StarBorderRounded style={{}} />
                   </div>
                 </div>
               </div>
-              <div className="item-details">
-                <h3 className="item-name">{movie.title}</h3>
-                <div className="genres">
-                  <ul className="genre-list">
+              <div className="list-item-details">
+                <h3 className="list-item-name">{movie.title}</h3>
+                <div className="list-item-genres">
+                  <ul className="list-item-genre-list">
                     <li>{movie.genre}</li>
                   </ul>
-                  <span className="item-age-limit">{movie.ageLimit}+</span>
-                  <span className="item-year">{movie.year}</span>
+                  <span className="list-item-age-limit">{movie.ageLimit}+</span>
+                  <span className="list-item-year">{movie.year}</span>
                 </div>
-                <div className="item-description">{movie.description}</div>
+                <div className="list-item-description">{movie.description}</div>
               </div>
             </div>
           </div>

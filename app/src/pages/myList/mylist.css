@@ -1,9 +1,10 @@
 .home {
+  min-height: 100vh !important;
   background-color: var(--main-color);
   overflow: hidden;
 }
 
-.content {
+.mylist-content {
   display: flex;
   flex-direction: column;
   margin: 2.3rem;
@@ -11,14 +12,14 @@
   gap: 1.5rem;
 }
 
-.content > h1 {
+.mylist-content > h1 {
   display: flex;
   font-size: 26px;
   color: white;
   margin: 0px;
 }
 
-.data {
+.mylist-data {
   display: flex;
   flex-wrap: wrap;
   gap: 0.23rem;

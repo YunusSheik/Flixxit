@@ -3,11 +3,11 @@ import "./ContentList.css";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import ListItems from "../listItems/ListItems";
 
+// CONTENT LIST - to get list of movies or series created by admin
 export default function ContentList({ list }) {
   const [isMoved, setIsMoved] = useState(false);
   const [cardNumber, setCardNumber] = useState(0);
   const [clickLimit, setClickLimit] = useState(window.innerWidth / 230);
-
   const listRef = useRef();
 
   const handleClick = (direction) => {
@@ -26,11 +26,11 @@ export default function ContentList({ list }) {
   };
 
   return (
-    <div className="content-list">
-      <span className="list-titles">{list.title}</span>
-      <div className="slides">
+    <div className="content-list-page">
+      <span className="content-list-titles">{list.title}</span>
+      <div className="content-list-slides">
         <ArrowBackIos
-          className="slider-arrow left"
+          className="content-list-slider-arrow-left"
           onClick={() => handleClick("left")}
           style={{ display: !isMoved && "none" }}
         />
@@ -40,7 +40,7 @@ export default function ContentList({ list }) {
           ))}
         </div>
         <ArrowForwardIos
-          className="slider-arrow right"
+          className="content-list-slider-arrow-right"
           onClick={() => handleClick("right")}
         />
       </div>

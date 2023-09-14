@@ -1,3 +1,4 @@
+// ACTIONS FOR LOGIN
 export const loginStart = () => ({
   type: "LOGIN_START",
 });
@@ -10,7 +11,6 @@ export const loginFailure = () => ({
 });
 
 //logout
-
 export const logout = () => ({
   type: "LOGOUT",
 });

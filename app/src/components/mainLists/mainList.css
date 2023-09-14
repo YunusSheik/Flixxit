@@ -1,20 +1,20 @@
-.content-list {
+.content-list-page {
   width: 100%;
   margin-top: 10px;
 }
 
-.list-titles {
+.content-list-titles {
   color: white;
   font-size: 20px;
   margin-left: 40px;
 }
 
-.slides {
+.content-list-slides {
   position: relative;
   margin: 1px 0px;
 }
 
-.slider-arrow {
+.content-list-slider-arrow {
   z-index: 99;
   position: absolute;
   top: 0;
@@ -27,11 +27,11 @@
   cursor: pointer;
 }
 
-.left {
+.content-list-slider-arrow-left {
   left: 0;
 }
 
-.right {
+.content-list-slider-arrow-right {
   right: 0;
 }
 

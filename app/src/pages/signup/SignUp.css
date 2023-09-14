@@ -30,7 +30,7 @@
   border: none;
   color: white;
   border-radius: 5px;
-  padding: 5px 15px;
+  padding: 8px 18px;
   font-size: 16px;
 }
 
@@ -51,22 +51,22 @@
   justify-content: center;
   color: white;
 }
-h1 {
+.signup-header1 {
   margin: 20px 0px;
   font-size: 50px;
 }
 
-h2 {
+.signup-header2 {
   margin: 0px;
   font-size: 40px;
 }
 
-h3 {
+.signup-header3 {
   margin: 20px 0px;
   font-size: 30px;
 }
 
-.input {
+.signup-input {
   width: 50%;
   background-color: white;
   display: flex;
@@ -76,7 +76,7 @@ h3 {
   height: 50px;
   border-radius: 5px;
 }
-input {
+.input-field {
   border-radius: 5px;
   flex: 9;
   height: 100%;

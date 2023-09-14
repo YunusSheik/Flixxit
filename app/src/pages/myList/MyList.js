@@ -10,7 +10,7 @@ import ListItemsMain from "../../components/listItemsMain/ListItemsMain";
 export default function MyList() {
   const [isScrolled, setIsScrolled] = useState(false);
   const { user } = useContext(AuthContext);
-  const movies = useSelector((state) => state.flixxit.movies);
+  const movies = useSelector((state) => state.flixxit.likedMovies);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -52,25 +52,27 @@ export default function MyList() {
   };
 
   return (
-    <div className="home">
+    <>
       <div className={isScrolled ? "navbar-scrolled" : "navbar"}>
         <Navbar isScrolled={isScrolled} />
       </div>
-      <div className="content">
-        <h1>My List</h1>
-        <div className="data">
-          {movies.map((movie, index) => {
-            return (
-              <ListItemsMain
-                movieData={movie}
-                index={index}
-                key={movie.id}
-                isLiked={true}
-              />
-            );
-          })}
+      <div className="home">
+        <div className="mylist-content">
+          <h1>My List</h1>
+          <div className="mylist-data">
+            {movies.map((movie, index) => {
+              return (
+                <ListItemsMain
+                  movieData={movie}
+                  index={index}
+                  key={movie.id}
+                  isLiked={true}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

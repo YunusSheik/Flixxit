@@ -28,11 +28,11 @@ export default function PopularMovies() {
   };
 
   return (
-    <div className="content-list">
-      <span className="list-titles">Popular Movies</span>
-      <div className="slides">
+    <div className="content-list-page">
+      <span className="content-list-titles">Popular Movies</span>
+      <div className="content-list-slides">
         <ArrowBackIos
-          className="slider-arrow left"
+          className="content-list-slider-arrow-left"
           onClick={() => handleClick("left")}
           style={{ display: !isMoved && "none" }}
         />
@@ -43,7 +43,7 @@ export default function PopularMovies() {
         </div>
 
         <ArrowForwardIos
-          className="slider-arrow right"
+          className="content-list-slider-arrow-right"
           onClick={() => handleClick("right")}
         />
       </div>

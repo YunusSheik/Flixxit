@@ -45,8 +45,12 @@ export const Navbar = () => {
           <div className="profile">
             <KeyboardArrowDown className="icons" />
             <div className="options">
-              <span>Settings</span>
-              <span onClick={() => dispatch(logout())}>Log Out</span>
+              <span
+                className="drop-down-list"
+                onClick={() => dispatch(logout())}
+              >
+                Log Out
+              </span>
             </div>
           </div>
         </div>

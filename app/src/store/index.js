@@ -15,6 +15,7 @@ const initialState = {
   genresLoaded: false,
   genres: [],
   movies: [],
+  likedMovies: [],
 };
 
 export const getGenres = createAsyncThunk("flixxit/genres", async () => {
@@ -135,6 +136,7 @@ export const fetchRatedSeries = createAsyncThunk(
     const {
       flixxit: { genres },
     } = thunkAPI.getState();
+
     return getRawData(
       `${TMDB_URL}/tv/top_rated?api_key=${API_KEY}`,
       genres,
@@ -149,6 +151,7 @@ export const getUsersLikedMovies = createAsyncThunk(
     const {
       data: { movies },
     } = await axios.get(`http://localhost:8000/api/users/liked/${email}`);
+    console.log("userliked", movies);
     return movies;
   }
 );
@@ -193,10 +196,10 @@ const FlixxitSlice = createSlice({
       state.movies = action.payload;
     });
     builder.addCase(getUsersLikedMovies.fulfilled, (state, action) => {
-      state.movies = action.payload;
+      state.likedMovies = action.payload;
     });
     builder.addCase(removeMovieFromLiked.fulfilled, (state, action) => {
-      state.movies = action.payload;
+      state.likedMovies = action.payload;
     });
   },
 });

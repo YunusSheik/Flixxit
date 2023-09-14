@@ -1,6 +1,7 @@
 import axios from "axios";
 import { loginFailure, loginStart, loginSuccess } from "./AuthActions";
 
+// API CALLS FOR LOGIN
 export const login = async (user, dispatch) => {
   dispatch(loginStart());
   try {

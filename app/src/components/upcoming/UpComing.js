@@ -24,9 +24,9 @@ export default function Featured({ type, setGenre }) {
   }, [type]);
 
   return (
-    <div className="featured">
+    <div className="upcoming-featured">
       {type && (
-        <div className="category">
+        <div className="upcoming-category">
           <span>{type === "movies" ? "Movies" : "Series"}</span>
           <select
             name="genre"
@@ -57,17 +57,17 @@ export default function Featured({ type, setGenre }) {
         </div>
       )}
       <img src={content.img} alt="" />
-      <div className="info">
+      <div className="upcoming-info">
         <img src={content.imgTitle} alt="" />
-        <span className="desc">{content.description}</span>
-        <div className="buttons">
-          <button className="play">
+        <span className="upcoming-desc">{content.description}</span>
+        <div className="upcoming-buttons">
+          <button className="upcoming play">
             <PlayCircleOutline />
-            <span>Play</span>
+            <span className="play-button">Play</span>
           </button>
-          <button className="more">
+          <button className="upcoming more">
             <InfoOutlined />
-            <span>Info</span>
+            <span className="upcoming-span">Info</span>
           </button>
         </div>
       </div>
