@@ -4,11 +4,12 @@ import { useContext, useState } from "react";
 import { login } from "../../authContext/apiCalls";
 import { AuthContext } from "../../authContext/AuthContext";
 import { Link } from "react-router-dom";
+import { loginSuccess, loginFailure } from "../../authContext/AuthActions";
 
 export default function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { dispatch } = useContext(AuthContext);
+  const { dispatch, ...data } = useContext(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -28,13 +29,16 @@ export default function LogIn() {
       <div className="login-description">
         <form className="login-form">
           <h1 className="login-h1">Log In</h1>
+          {data?.error && <h3>User credentials is invalid.</h3>}
           <input
             className="login-input"
+            id="input"
             type="email"
             placeholder="Email or Phone Number"
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
+            name="password"
             className="login-input"
             type="password"
             placeholder="Password"

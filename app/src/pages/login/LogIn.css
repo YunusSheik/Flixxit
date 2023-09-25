@@ -81,6 +81,7 @@
 }
 
 .login-login-button {
+  cursor: pointer;
   margin: 0px;
   height: 40px;
   background-color: red;
