@@ -3,8 +3,27 @@ import "./UpComing.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+import { fetchUpComingMovies } from "../../store";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 export default function Featured({ type, setGenre }) {
   const [content, setContent] = useState({});
+  const [currentMovie, setCurrentMovie] = useState();
+  const upComingMovies = useSelector((state) => state.flixxit.upComingMovies);
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchUpComingMovies({ type }));
+  }, []);
+
+  useEffect(() => {
+    setCurrentMovie(
+      upComingMovies[Math.floor(Math.random() * upComingMovies.length)]
+    );
+  }, [upComingMovies]);
 
   useEffect(() => {
     const getRandomContent = async () => {
@@ -12,7 +31,7 @@ export default function Featured({ type, setGenre }) {
         const res = await axios.get(`/movies/random?type=${type}`, {
           headers: {
             token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZDBjZDdhMjdmNThlOTBmNjdmNGQ4OSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MjEwNDU1MywiZXhwIjoxNjkyNzA5MzUzfQ.wSBVpHSRSsylZ8NhB5qt9e6ggpdMjR0npBBnwjrV8Xg",
+              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
           },
         });
         setContent(res.data[0]);
@@ -24,9 +43,9 @@ export default function Featured({ type, setGenre }) {
   }, [type]);
 
   return (
-    <div className="featured">
+    <div className="upcoming-featured">
       {type && (
-        <div className="category">
+        <div className="upcoming-category">
           <span>{type === "movies" ? "Movies" : "Series"}</span>
           <select
             name="genre"
@@ -56,20 +75,35 @@ export default function Featured({ type, setGenre }) {
           </select>
         </div>
       )}
-      <img src={content.img} alt="" />
-      <div className="info">
-        <img src={content.imgTitle} alt="" />
-        <span className="desc">{content.description}</span>
-        <div className="buttons">
-          <button className="play">
-            <PlayCircleOutline />
-            <span>Play</span>
-          </button>
-          <button className="more">
-            <InfoOutlined />
-            <span>Info</span>
-          </button>
+      <img
+        className="upcoming_image"
+        src={`https://image.tmdb.org/t/p/original${currentMovie?.image}`}
+        alt=""
+      />
+      <div className="upcoming-info">
+        <div className="upcoming-title">
+          <h2>{currentMovie?.title}</h2>
+          <h4>({currentMovie?.date})</h4>
         </div>
+        {/* <img src={content.imgTitle} alt="" /> */}
+        <p className="upcoming-desc">{currentMovie?.desc}</p>
+
+        <button className="upcoming play">
+          <PlayCircleOutline />
+          <span
+            className="play-button"
+            onClick={() =>
+              navigate(`/${currentMovie?.type}/${currentMovie?.id}`, {
+                state: {
+                  movieId: currentMovie?.id,
+                  type: currentMovie?.type,
+                },
+              })
+            }
+          >
+            Play Trailer
+          </span>
+        </button>
       </div>
     </div>
   );

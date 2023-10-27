@@ -2,10 +2,20 @@ const router = require("express").Router();
 const User = require("../models/User");
 const CryptoJS = require("crypto-js");
 const verifyToken = require("../verifyToken");
-const { addToLikedMovies } = require("../controllers/UserController");
+const {
+  addToLikedMovies,
+  getLikedMovies,
+  removeLikedMovies,
+} = require("../controllers/UserController");
 
-// POST
+// POST LIKED MOVIES
 router.post("/add", verifyToken, addToLikedMovies);
+
+// GET LIKED MOVIES
+router.get("/liked/:email", getLikedMovies);
+
+// REMOVE LIKED MOVIES
+router.put("/remove", removeLikedMovies);
 
 // UPDATE
 router.put("/:id", verifyToken, async (req, res) => {

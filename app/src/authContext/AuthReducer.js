@@ -1,3 +1,4 @@
+//  REDUCER FOR LOGIN AND CHANGE PASSWORD
 const AuthReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN_START":
@@ -23,6 +24,18 @@ const AuthReducer = (state, action) => {
         user: null,
         isFetching: false,
         error: false,
+      };
+    case "RESET_PASSWORD_SUCCESS":
+      return {
+        user: action.payload,
+        isFetching: false,
+        error: false,
+      };
+    case "RESET_PASSWORD_FAILURE":
+      return {
+        user: null,
+        isFetching: false,
+        error: true,
       };
     default:
       return { ...state };

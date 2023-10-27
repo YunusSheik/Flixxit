@@ -26,6 +26,6 @@ app.use("/api/users", userRoute);
 app.use("/api/movies", movieRoute);
 app.use("/api/lists", listRoute);
 
-app.listen(6000, () => {
+app.listen(8000, () => {
   console.log("Server is runnning!");
 });

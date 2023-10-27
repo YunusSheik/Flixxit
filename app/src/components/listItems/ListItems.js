@@ -1,18 +1,60 @@
-import { useEffect, useState } from "react";
-import "./ListItems.css";
+import React, { useEffect, useContext, useState } from "react";
+import noposter from "../../assets/no-poster.png";
+import "../listItemsMain/ListItemsMain.css";
 import {
   Add,
   PlayCircleOutline,
   ThumbUpOffAlt,
   ThumbDownOffAlt,
   StarBorderRounded,
+  Close,
 } from "@mui/icons-material";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../authContext/AuthContext";
 
-export default function ListItems({ item }) {
+//  LISTITEMS - to span item-card for admin added movies
+export default function ListItems({ item, isLiked = false, props }) {
   const [isHovered, setIsHovered] = useState(false);
   const [movie, setMovie] = useState({});
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const [upVote, setUpVote] = useState(7);
+  const [downVote, setDownVote] = useState(4);
+
+  const [upVoteActive, setUpVoteActive] = useState(false);
+  const [downVoteActive, setDownVoteActive] = useState(false);
+
+  function likeMovie() {
+    if (upVoteActive) {
+      setUpVoteActive(false);
+      setUpVote(upVote - 1);
+    } else {
+      setUpVoteActive(true);
+      setUpVote(upVote + 1);
+      if (downVoteActive) {
+        setDownVoteActive(false);
+        setUpVote(upVote + 1);
+        setDownVote(downVote - 1);
+      }
+    }
+  }
+
+  function disLikeMovie() {
+    if (downVoteActive) {
+      setDownVoteActive(false);
+      setDownVote(downVote - 1);
+    } else {
+      setDownVoteActive(true);
+      setDownVote(downVote + 1);
+      if (upVoteActive) {
+        setUpVoteActive(false);
+        setDownVote(downVote + 1);
+        setUpVote(upVote - 1);
+      }
+    }
+  }
 
   useEffect(() => {
     const getMovie = async () => {
@@ -20,7 +62,7 @@ export default function ListItems({ item }) {
         const res = await axios.get("/movies/find/" + item, {
           headers: {
             token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZDBjZDdhMjdmNThlOTBmNjdmNGQ4OSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MjE2MTE2MCwiZXhwIjoxNjkyNzY1OTYwfQ.o0vlALohBdtMvvSnPWgIAi-9SwopPCOOOScuKIgoLmI",
+              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
           },
         });
         setMovie(res.data);
@@ -31,92 +73,102 @@ export default function ListItems({ item }) {
     getMovie();
   }, [item]);
 
+  const addToList = async () => {
+    try {
+      await axios.post(
+        "http://localhost:8000/api/users/add",
+        { email: user.email, data: movie },
+        {
+          headers: {
+            token:
+              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+          },
+        }
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   if (movie !== null) {
     return (
-      // <div
-      //   className="list-item"
-      //   onMouseEnter={() => setIsHovered(true)}
-      //   onMouseLeave={() => setIsHovered(false)}
-      // >
-      //   <img src={movie.img} alt="img" />
-      //   {isHovered && (
-      //     <div className="hover">
-      //       <div className="item-video-image">
-      //         <video src={movie.trailer} autoPlay={true} loop muted />
-      //       </div>
-      //       <div className="item-info">
-      //         <div className="item-stats">
-      //           <div className="item-icons">
-      //             <Link to="/play" state={{ movie }}>
-      //               <PlayCircleOutline className="item-icon" />
-      //             </Link>
-      //             <ThumbUpOffAlt className="item-icon" />
-      //             <ThumbDownOffAlt className="item-icon" />
-      //             <Add className="item-icon" />
-      //           </div>
-      //           <div className="item-duration">
-      //             <span>{movie.duration}</span>
-      //             <div className="item-rating">
-      //               {movie.rating}
-      //               <StarBorderRounded style={{}} />
-      //             </div>
-      //           </div>
-      //         </div>
-      //         <div className="item-details">
-      //           <h3 className="item-name">{movie.title}</h3>
-      //           <div className="genres">
-      //             <ul className="genre-list">
-      //               <li>{movie.genre}</li>
-      //             </ul>
-      //             <span className="item-age-limit">{movie.ageLimit}+</span>
-      //             <span className="item-year">{movie.year}</span>
-      //           </div>
-      //           <div className="item-description">{movie.description}</div>
-      //         </div>
-      //       </div>
-      //     </div>
-      //   )}
-      // </div>
-
       <div
-        className="list-item"
+        className="list-item-page"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <img src={movie.img} alt="img" />
+        <img
+          className="list-item-img"
+          src={noposter}
+          alt="img"
+          style={{ height: "129.25px" }}
+        />
         {isHovered && (
-          <div className="hover">
-            <div className="item-video-image">
-              <video src={movie.trailer} autoPlay={true} loop muted />
+          <div className="list-item-hover">
+            <div className="list-item-video-image">
+              <img
+                className="list-item-hovered-img"
+                src={movie.img}
+                alt="img"
+              />
             </div>
-            <div className="item-info">
-              <div className="item-stats">
-                <div className="item-icons">
-                  <Link to="/play" state={{ movie }}>
-                    <PlayCircleOutline className="item-icon" />
-                  </Link>
-                  <ThumbUpOffAlt className="item-icon" />
-                  <ThumbDownOffAlt className="item-icon" />
-                  <Add className="item-icon" />
+            <div className="list-item-info">
+              <div className="list-item-stats">
+                <div className="list-item-icons">
+                  <PlayCircleOutline
+                    className="list-item-icon"
+                    onClick={() =>
+                      navigate(`/${movie.type}/${movie._id}`, {
+                        state: {
+                          movieId: movie._id,
+                          type: movie.type,
+                        },
+                      })
+                    }
+                  />
+                  <div className="vote">
+                    <ThumbUpOffAlt
+                      style={{ color: upVoteActive ? "blue" : "white" }}
+                      className="list-item-icon"
+                      onClick={likeMovie}
+                    />
+                    {upVote}
+                  </div>
+                  <div className="vote">
+                    <ThumbDownOffAlt
+                      style={{ color: downVoteActive ? "blue" : "white" }}
+                      className="list-item-icon"
+                      onClick={disLikeMovie}
+                    />
+                    {downVote}
+                  </div>
+                  {isLiked ? (
+                    <Close title="Remove from List" />
+                  ) : (
+                    <Add className="list-item-icon" onClick={addToList} />
+                  )}
                 </div>
-                <div className="item-duration">
-                  <span>{movie.duration}</span>
-                  <div className="item-rating">
+                <div className="list-item-duration">
+                  <div className="list-item-rating">
                     {movie.rating}
-                    <StarBorderRounded style={{}} />
+                    <StarBorderRounded />
                   </div>
                 </div>
               </div>
-              <div className="item-details">
-                <h3 className="item-name">{movie.title}</h3>
-                <div className="genres">
-                  <ul className="genre-list">
+              <div className="list-item-details">
+                <h3 className="list-item-name">{movie.title}</h3>
+                <div className="list-item-genres-age-year">
+                  <ul className="list-item-genre-list">
                     <li>{movie.genre}</li>
                   </ul>
-                  <span className="item-age-limit">{movie.ageLimit}+</span>
-                  <span className="item-year">{movie.year}</span>
+                  <div className="list-item-age-year">
+                    <span className="list-item-age-limit">
+                      {movie.ageLimit}+
+                    </span>
+                    <span className="list-item-year">{movie.year}</span>
+                  </div>
                 </div>
-                <div className="item-description">{movie.description}</div>
+                <div className="list-item-description">{movie.description}</div>
               </div>
             </div>
           </div>

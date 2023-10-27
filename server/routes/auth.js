@@ -2,6 +2,7 @@ const router = require("express").Router();
 const User = require("../models/User");
 const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
+const verifyToken = require("../verifyToken");
 
 // Register
 router.post("/register", async (req, res) => {
@@ -28,7 +29,6 @@ router.post("/login", async (req, res) => {
     const user = await User.findOne({
       email: req.body.email,
     });
-
     if (user === null) {
       return res.status(401).json("User doesn't exist!");
     } else {
@@ -44,6 +44,40 @@ router.post("/login", async (req, res) => {
           { expiresIn: "7d" }
         );
         return res.status(200).json({ ...info, accessToken });
+      }
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Forgot PAssword
+router.post("/forgotPassword", async (req, res) => {
+  try {
+    const user1 = await User.findOne({
+      email: req.body.email,
+    });
+
+    if (user1 === null) {
+      return res.status(401).json("User doesn't exist!");
+    } else {
+      try {
+        if (req.body.password) {
+          req.body.password = CryptoJS.AES.encrypt(
+            req.body.password,
+            process.env.SECRET_KEY
+          ).toString();
+        }
+        const updatedUser = await User.findByIdAndUpdate(
+          user1.id,
+          {
+            $set: req.body,
+          },
+          { new: true }
+        );
+        res.status(200).json(updatedUser);
+      } catch (err) {
+        res.status(500).json(err);
       }
     }
   } catch (err) {

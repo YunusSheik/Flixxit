@@ -1,0 +1,142 @@
+.porfile_page {
+  background-color: var(--main-color);
+  color: white;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.user_profile {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5%;
+}
+.user_profile > h1 {
+  font-size: 30px;
+  font-weight: 400;
+  border-bottom: 1px solid #282c2d;
+  margin-bottom: 20px;
+}
+
+.profile_info {
+  display: flex;
+}
+
+.profile_info > img {
+  height: 100px;
+}
+
+.profile_details {
+  margin-left: 25px;
+  flex: 1;
+}
+
+.profile_details > h2 {
+  background-color: gray;
+  padding: 15px 15px 15px 20px;
+  font-size: 15px;
+  margin: 0px;
+}
+
+.logout_button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin-top: 2%;
+  width: 100%;
+  background-color: #e50914;
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.profile_plans {
+  margin-top: 20px;
+}
+
+.profile_plans > h3 {
+  margin: 0px;
+  border-bottom: 1px solid #282c2d;
+  padding-bottom: 10px;
+}
+
+.user_plan {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  opacity: 0.7;
+}
+
+.user_plan:hover {
+  opacity: 1;
+}
+
+.subscribe_button {
+  padding: 10px 20px;
+  cursor: pointer;
+  color: white;
+  background-color: #e50914;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+}
+
+.plan_info > h4 {
+  padding: 0px;
+  font-size: 15px;
+}
+
+@media (max-width: 768px) {
+  .user_profile {
+    width: 80%;
+    padding-top: 15%;
+  }
+
+  .user_profile > h1 {
+    font-size: 25px;
+    margin-bottom: 15px;
+  }
+
+  .profile_info > img {
+    height: 85px;
+  }
+
+  .profile_details {
+    margin-left: 20px;
+    flex: 1;
+  }
+
+  .profile_details > h2 {
+    background-color: gray;
+    padding: 10px 10px 10px 15px;
+    font-size: 14px;
+    margin: 0px;
+  }
+
+  .logout_button {
+    font-size: 0.9rem;
+  }
+
+  .profile_plans {
+    margin-top: 15px;
+  }
+
+  .profile_plans > h3 {
+    font-size: 16px;
+  }
+
+  .user_plan {
+    padding: 15px;
+  }
+
+  .subscribe_button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .plan_info > h4 {
+    font-size: 13px;
+  }
+}

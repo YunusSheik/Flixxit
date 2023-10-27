@@ -1,0 +1,27 @@
+.home {
+  min-height: 100vh !important;
+  background-color: var(--main-color);
+  overflow: hidden;
+}
+
+.mylist-content {
+  display: flex;
+  flex-direction: column;
+  margin: 2.3rem;
+  margin-top: 5rem;
+  gap: 1.5rem;
+}
+
+.mylist-content > h1 {
+  display: flex;
+  font-size: 26px;
+  color: white;
+  margin: 0px;
+}
+
+.mylist-data {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.23rem;
+  margin-top: 0px;
+}

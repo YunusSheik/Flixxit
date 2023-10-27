@@ -85,5 +85,3 @@ router.get("/", verifyToken, async (req, res) => {
   }
 });
 module.exports = router;
-
-//carousel of upcoming list here

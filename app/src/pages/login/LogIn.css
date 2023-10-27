@@ -1,4 +1,4 @@
-.login {
+.login-page {
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -16,12 +16,40 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .logo {
   cursor: pointer;
   height: 40px;
 }
 
-.signup-button {
+.login-button {
+  cursor: pointer;
+  background-color: red;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding: 8px 18px;
+  font-size: 16px;
+}
+
+.details {
+  width: 100%;
+  height: 20%;
+}
+
+.login-header {
+  padding: 20px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login-logo {
+  cursor: pointer;
+  height: 40px;
+}
+
+.login-signup-button {
   cursor: pointer;
   background-color: red;
   border: none;
@@ -31,12 +59,12 @@
   font-size: 16px;
 }
 
-.details {
+.login-details {
   width: 100%;
   height: 20%;
 }
 
-.description {
+.login-description {
   width: 100%;
   height: 80%;
   position: absolute;
@@ -50,7 +78,7 @@
   filter: brightness(100%);
 }
 
-form {
+.login-form {
   width: 300px;
   height: 300px;
   padding: 30px;
@@ -61,12 +89,12 @@ form {
   justify-content: space-around;
 }
 
-h1 {
+.login-h1 {
   margin: 0px;
   text-align: center;
 }
 
-input {
+.login-input {
   cursor: pointer;
   height: 40px;
   padding-left: 10px;
@@ -80,19 +108,138 @@ input {
   color: lightgray;
 }
 
-.login-button {
+.login-login-button {
+  cursor: pointer;
   margin: 0px;
   height: 40px;
   background-color: red;
   color: white;
   border: none;
+  border-radius: 5px;
   font-size: 18px;
 }
 
-span {
+.forgot-password {
+  color: white;
+  text-decoration-line: none;
+}
+
+.login-span {
   color: lightgray;
 }
 
-b {
+.login-span > b {
   color: white;
+}
+
+@media (max-width: 768px) {
+  .login-page {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.3)),
+      url("../../assets/login.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: darken;
+    top: 0;
+  }
+
+  .login-header {
+    padding: 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .login-logo {
+    cursor: pointer;
+    height: 40px;
+  }
+
+  .login-details {
+    width: 100%;
+    height: 15%;
+  }
+
+  .login-signup-button {
+    cursor: pointer;
+    background-color: red;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 16px;
+  }
+
+  .login-description {
+    width: 100%;
+    height: 95%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    filter: brightness(100%);
+  }
+
+  .login-form {
+    width: 250px;
+    height: 250px;
+    padding: 30px;
+    border-radius: 5px;
+    background-color: rgb(66, 61, 61);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .login-h1 {
+    font-size: 24px;
+    margin: 0px;
+    text-align: center;
+  }
+
+  .login-input {
+    cursor: pointer;
+    height: 40px;
+    padding-left: 10px;
+    border-radius: 5px;
+    background-color: gray;
+    color: white;
+    border: none;
+  }
+
+  ::placeholder {
+    color: lightgray;
+  }
+
+  .login-login-button {
+    cursor: pointer;
+    margin: 0px;
+    height: 40px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .forgot-password {
+    font-size: 14px;
+    color: white;
+    text-decoration-line: none;
+  }
+
+  .login-span {
+    font-size: 14px;
+    color: lightgray;
+  }
+
+  .login-span > b {
+    color: white;
+  }
 }
