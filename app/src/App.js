@@ -8,12 +8,15 @@ import {
 } from "react-router-dom";
 import LogIn from "./pages/login/LogIn";
 import Home from "./pages/home/Home";
-import PlayItem from "./pages/playItem/PlayItem";
 import SignUp from "./pages/signup/SIgnUp";
 import { AuthContext } from "./authContext/AuthContext";
 import MoviePage from "./pages/movies/MoviePage";
 import SeriesPage from "./pages/series/SeriesPage";
 import MyList from "./pages/myList/MyList";
+import SearchResult from "./pages/searchResult/SearchResult";
+import MovieDetails from "./pages/movieDetails/MovieDetails";
+import ForgotPassword from "./pages/login/ForgotPassowrd";
+import { UserProfile } from "./pages/userProfile/UserProfile";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -22,17 +25,25 @@ function App() {
     <Router>
       <Routes>
         <Route
-          exact
-          path="/"
-          element={user ? <Home /> : <Navigate to="/login" />}
-        />
-        <Route
           path="/register"
           element={!user ? <SignUp /> : <Navigate to="/" />}
         />
         <Route
           path="/login"
           element={!user ? <LogIn /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/forgotPassword"
+          element={!user ? <ForgotPassword /> : <Navigate to="/login" />}
+        />
+        <Route
+          exact
+          path="/"
+          element={user ? <Home /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/profile"
+          element={user ? <UserProfile /> : <Navigate to="/login" />}
         />
         <Route
           path="/movies"
@@ -46,9 +57,10 @@ function App() {
           path="/my-list"
           element={user ? <MyList /> : <Navigate to="/login" />}
         />
+        <Route path="/search/:query" element={<SearchResult />} />
         <Route
-          path="/play"
-          element={user ? <PlayItem /> : <Navigate to="/login" />}
+          path=":type/:id"
+          element={user ? <MovieDetails /> : <Navigate to="/login" />}
         />
       </Routes>
     </Router>
