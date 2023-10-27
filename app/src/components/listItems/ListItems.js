@@ -159,7 +159,7 @@ export default function ListItems({ item, isLiked = false, props }) {
                 <h3 className="list-item-name">{movie.title}</h3>
                 <div className="list-item-genres-age-year">
                   <ul className="list-item-genre-list">
-                    <li>{movie.genre}</li>
+                    <li>{movie.genres}</li>
                   </ul>
                   <div className="list-item-age-year">
                     <span className="list-item-age-limit">
