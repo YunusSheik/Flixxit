@@ -17,6 +17,7 @@ import SearchResult from "./pages/searchResult/SearchResult";
 import MovieDetails from "./pages/movieDetails/MovieDetails";
 import ForgotPassword from "./pages/login/ForgotPassowrd";
 import { UserProfile } from "./pages/userProfile/UserProfile";
+import AboutUs from "./components/aboutUs/AboutUs";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -63,6 +64,7 @@ function App() {
           element={user ? <MovieDetails /> : <Navigate to="/login" />}
         />
       </Routes>
+      {user && <AboutUs />}
     </Router>
   );
 }

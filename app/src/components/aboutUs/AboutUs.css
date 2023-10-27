@@ -1,0 +1,30 @@
+.about_us_section {
+  background-color: var(--main-color);
+  overflow: hidden;
+  text-align: center;
+  color: red;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(3.5px);
+  -webkit-backdrop-filter: blur(3.5px);
+  padding: 25px 0px;
+}
+
+.about_us_info {
+  display: grid;
+  grid-template-areas: "copyright policy about_us_link";
+  gap: 10px;
+  width: max-content;
+}
+
+.about_us_info > span {
+  padding: 0px 150px;
+}
+
+.policy {
+  padding-left: 80px !important;
+}
+
+.about_us_link > a {
+  text-decoration: none;
+  color: red;
+}
