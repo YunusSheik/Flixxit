@@ -85,9 +85,7 @@ export default function Featured({ type, setGenre }) {
           <h2>{currentMovie?.title}</h2>
           <h4>({currentMovie?.date})</h4>
         </div>
-        {/* <img src={content.imgTitle} alt="" /> */}
         <p className="upcoming-desc">{currentMovie?.desc}</p>
-
         <button className="upcoming play">
           <PlayCircleOutline />
           <span
