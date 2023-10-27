@@ -189,7 +189,6 @@ input[type="checkbox"] {
     backdrop-filter: blur(3.5px);
     -webkit-backdrop-filter: blur(3.5px);
     color: rgb(184, 12, 12);
-    /* display: inline-block; */
     transition: 0.3s ease;
   }
 
@@ -204,6 +203,14 @@ input[type="checkbox"] {
 
   input[type="checkbox"]:checked ~ .nav-menu {
     display: block;
+  }
+
+  .container-right {
+    margin-right: 40px;
+  }
+
+  .options {
+    padding: 0px;
   }
 
   .searchInput {
