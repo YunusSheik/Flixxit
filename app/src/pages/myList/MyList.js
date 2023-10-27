@@ -12,39 +12,11 @@ export default function MyList() {
   const { user } = useContext(AuthContext);
   const movies = useSelector((state) => state.flixxit.likedMovies);
   const dispatch = useDispatch();
-
   useEffect(() => {
     if (user.email) {
       dispatch(getUsersLikedMovies(user.email));
     }
   }, [user.email]);
-
-  // useEffect(() => {
-  //   const getRandomLists = async () => {
-  //     try {
-  //       const res = await axios.get(
-  //         `lists${type ? "?type=" + type : ""}${
-  //           genre ? "&genre=" + genre : ""
-  //         }`,
-  //         {
-  //           headers: {
-  //             token:
-  //               "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-  //           },
-  //         }
-  //       );
-  //       for (let i = 0; i < res.data.length; i++) {
-  //         if (res.data[i].type === "movies") {
-  //           moviesListInfo.push(res.data[i]);
-  //           setLists(moviesListInfo);
-  //         }
-  //       }
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   getRandomLists();
-  // }, [type, genre]);
 
   window.onscroll = () => {
     setIsScrolled(window.scrollY === 0 ? false : true);

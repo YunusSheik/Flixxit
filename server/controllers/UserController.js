@@ -42,31 +42,6 @@ module.exports.removeLikedMovies = async (req, res) => {
     const { email, movieId } = req.body;
     const user = await User.findOne({ email });
     if (user) {
-      //       const { likedMovies } = user;
-      //       const movieIndex = likedMovies.findIndex(({ id }) => id === movieId);
-      //       if (movieIndex === null || movieIndex === undefined) {
-      //         res.status(400).send({ msg: "Movie not found." });
-      //       } else {
-
-      //       }
-      //       likedMovies.splice(movieIndex, 1);
-      //       await User.findByIdAndUpdate(
-      //         user._id,
-      //         {
-      //           likedMovies,
-      //         },
-      //         { new: true }
-      //       );
-      //       return res.json({
-      //         msg: "Movie removed successfully",
-      //         movies: likedMovies,
-      //       });
-      //     }
-      //   } catch (err) {
-      //     return res.json({ msg: "Error occured while removing movie from list." });
-      //   }
-      // };
-
       const movies = user.likedMovies;
       const movieIndex = movies.findIndex(({ id }) => id === movieId);
       if (movieIndex == null || movieIndex == undefined) {

@@ -4,7 +4,6 @@ import { useContext, useState } from "react";
 import { login } from "../../authContext/apiCalls";
 import { AuthContext } from "../../authContext/AuthContext";
 import { Link } from "react-router-dom";
-import { loginSuccess, loginFailure } from "../../authContext/AuthActions";
 
 export default function LogIn() {
   const [email, setEmail] = useState("");
@@ -47,6 +46,9 @@ export default function LogIn() {
           <button className="login-login-button" onClick={handleLogin}>
             Log In
           </button>
+          <Link to="/forgotPassword" className="forgot-password">
+            <span>Forgot Passowrd ?</span>
+          </Link>
           <span className="login-span">
             New to Flixxit? <b>Sign Up now.</b>
           </span>
