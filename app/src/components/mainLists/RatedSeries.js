@@ -8,7 +8,8 @@ export default function RatedSeries() {
   const [isMoved, setIsMoved] = useState(false);
   const [cardNumber, setCardNumber] = useState(0);
   const [clickLimit, setClickLimit] = useState(window.innerWidth / 230);
-  const ratedSeries = useSelector((state) => state.flixxit.ratedSeries);
+  let ratedSeries = useSelector((state) => state.flixxit.ratedSeries);
+
   const listRef = useRef();
 
   const handleClick = (direction) => {

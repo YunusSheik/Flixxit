@@ -1,13 +1,14 @@
 import React, { useRef, useState } from "react";
-import "./mainList.css";
+import "../listItemsMain/ListItemsMain.css";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
-import TrendingList from "../trendingList/TrendingList";
+import ListItemsMain from "../listItemsMain/ListItemsMain";
+import { useSelector } from "react-redux";
 
-export default function ContentList() {
+export default function PlayingNow() {
   const [isMoved, setIsMoved] = useState(false);
   const [cardNumber, setCardNumber] = useState(0);
   const [clickLimit, setClickLimit] = useState(window.innerWidth / 230);
-
+  const playingNow = useSelector((state) => state.flixxit.playingNow);
   const listRef = useRef();
 
   const handleClick = (direction) => {
@@ -27,7 +28,7 @@ export default function ContentList() {
 
   return (
     <div className="content-list-page">
-      <span className="content-list-titles">Title</span>
+      <span className="content-list-titles">Playing Now</span>
       <div className="content-list-slides">
         <ArrowBackIos
           className="content-list-slider-arrow-left"
@@ -35,8 +36,11 @@ export default function ContentList() {
           style={{ display: !isMoved && "none" }}
         />
         <div className="content-list-container" ref={listRef}>
-          <TrendingList />
+          {playingNow.slice(0, 10).map((movie, index) => (
+            <ListItemsMain movieData={movie} index={index} key={movie.id} />
+          ))}
         </div>
+
         <ArrowForwardIos
           className="content-list-slider-arrow-right"
           onClick={() => handleClick("right")}

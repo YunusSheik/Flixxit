@@ -1,6 +1,6 @@
 .content-list-page {
   width: 100%;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .content-list-titles {
@@ -14,7 +14,7 @@
   margin: 1px 0px;
 }
 
-.content-list-slider-arrow {
+.content-list-slider-arrow-left {
   z-index: 99;
   position: absolute;
   top: 0;
@@ -23,16 +23,23 @@
   width: 40px;
   height: 100%;
   background-color: rgb(26, 23, 23, 0);
-  color: white;
   cursor: pointer;
-}
-
-.content-list-slider-arrow-left {
   left: 0;
+  color: red;
 }
 
 .content-list-slider-arrow-right {
+  z-index: 99;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 40px;
+  height: 100%;
+  background-color: rgb(26, 23, 23, 0);
+  cursor: pointer;
   right: 0;
+  color: red;
 }
 
 .content-list-container {

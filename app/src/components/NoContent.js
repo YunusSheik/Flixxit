@@ -6,7 +6,7 @@ export default function NoContent() {
     <div className="content-list">
       <span className="list-titles">Flixxit Movies</span>
       <div className="slides">
-        <h4 className="no-content">No content available for selected genre.</h4>
+        <h4 className="no-content">No content available.</h4>
       </div>
     </div>
   );

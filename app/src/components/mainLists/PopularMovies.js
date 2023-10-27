@@ -38,7 +38,12 @@ export default function PopularMovies() {
         />
         <div className="content-list-container" ref={listRef}>
           {popularMovies.slice(0, 10).map((movie, index) => (
-            <ListItemsMain movieData={movie} index={index} key={movie.id} />
+            <ListItemsMain
+              movieData={movie}
+              index={index}
+              key={movie.id}
+              // type="movie"
+            />
           ))}
         </div>
 
