@@ -7,6 +7,7 @@ const userRoute = require("./routes/users");
 const movieRoute = require("./routes/movies");
 const listRoute = require("./routes/lists");
 const cors = require("cors");
+const PORT = process.env.PORT || 8000;
 
 dotenv.config();
 
@@ -26,6 +27,6 @@ app.use("/api/users", userRoute);
 app.use("/api/movies", movieRoute);
 app.use("/api/lists", listRoute);
 
-app.listen(8000, () => {
-  console.log("Server is runnning!");
+app.listen(PORT, () => {
+  console.log(`Server is runnning on port ${PORT}`);
 });
