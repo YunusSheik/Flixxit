@@ -27,7 +27,7 @@ export default function SearchCard(props) {
   const addToList = async () => {
     try {
       await axios.post(
-        "http://localhost:8000/api/users/add",
+        "https://backend-3x8q.onrender.com/api/users/add",
         { email: user.email, data: props.movieData },
         {
           headers: {

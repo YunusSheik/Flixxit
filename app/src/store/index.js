@@ -222,7 +222,9 @@ export const getUsersLikedMovies = createAsyncThunk(
   async (email) => {
     const {
       data: { movies },
-    } = await axios.get(`http://localhost:8000/api/users/liked/${email}`);
+    } = await axios.get(
+      `https://backend-3x8q.onrender.com/api/users/liked/${email}`
+    );
     return movies;
   }
 );
@@ -232,7 +234,7 @@ export const removeMovieFromLiked = createAsyncThunk(
   async ({ movieId, email }) => {
     const {
       data: { movies },
-    } = await axios.put("http://localhost:8000/api/users/remove", {
+    } = await axios.put("https://backend-3x8q.onrender.com/api/users/remove", {
       email,
       movieId,
     });
