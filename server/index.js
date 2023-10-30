@@ -13,7 +13,7 @@ const path = require("path");
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://merry-tarsier-ff40a1.netlify.app",
+    origin: "https://beamish-sunshine-ee5d5a.netlify.app",
   })
 );
 
