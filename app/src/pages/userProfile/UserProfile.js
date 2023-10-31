@@ -8,7 +8,7 @@ import Img from "../../components/lazyLoad/lazyLoadImg";
 
 export const UserProfile = () => {
   const { user, dispatch } = useContext(AuthContext);
-  console.log("first", user);
+
   return (
     <div className="porfile_page">
       <Navbar />
