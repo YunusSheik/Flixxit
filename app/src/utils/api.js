@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const API_KEY = "61b39ac0a54c2900a09f2a99aea4b449";
 export const TMDB_URL = "https://api.themoviedb.org/3";
-export const BASE_URL = "https://backend-3x8q.onrender.com/";
+export const BASE_URL = "https://backend-3x8q.onrender.com/api/";
 
 const headers = {
   Authorization:
