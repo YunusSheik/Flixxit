@@ -11,15 +11,15 @@ const PORT = process.env.PORT || 8000;
 const path = require("path");
 
 app.use(express.json());
-// app.use(
-//   cors({
-//     origin: "https://subtle-gaufre-be3f99.netlify.app",
-//   })
-// );
+app.use(
+  cors({
+    origin: "https://subtle-gaufre-be3f99.netlify.app",
+  })
+);
 
-// app.use(express.static(path.resolve(__dirname, "./static")));
+app.use(express.static(path.resolve(__dirname, "./static")));
 
-// dotenv.config();
+dotenv.config();
 
 mongoose
   .connect(process.env.MONGO_URL, {
@@ -36,9 +36,9 @@ app.use("/api/users", userRoute);
 app.use("/api/movies", movieRoute);
 app.use("/api/lists", listRoute);
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "./static", "index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./static", "index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`Server is runnning on port ${PORT}`);
