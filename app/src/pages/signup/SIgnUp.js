@@ -4,6 +4,7 @@ import "./SignUp.css";
 import logo from "../../assets/logo.png";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../utils/api";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -21,7 +22,11 @@ export default function Register() {
     e.preventDefault();
 
     try {
-      await axios.post("auth/register", { email, password, username });
+      await axios.post(BASE_URL + "auth/register", {
+        email,
+        password,
+        username,
+      });
       navigate("/login");
     } catch (err) {
       console.log(err);
