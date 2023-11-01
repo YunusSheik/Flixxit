@@ -8,7 +8,7 @@ Flixxit is a streaming service that offers a wide variety of TV shows, movies, a
 - User can log in/logout.
 - User can add movies or tv shows to watchlist to watch later.
 - User can search for a specific movie to watch from the database.
-- User can view the movie or tv show details such as the cast and crew after logging in.
+- User can view the movie or tv show complete details after logging in.
 - User can subscribe to the application with different range of subscription plans to watch the content.
 
 ## Technologies used
