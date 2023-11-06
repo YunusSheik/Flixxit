@@ -17,14 +17,23 @@
 }
 
 .about_us_info > span {
-  padding: 0px 150px;
-}
-
-.policy {
-  padding-left: 80px !important;
+  padding: 0px 130px;
 }
 
 .about_us_link > a {
   text-decoration: none;
   color: red;
+}
+
+@media (max-width: 768px) {
+  .about_us_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .policy {
+    padding-left: 120px;
+  }
 }

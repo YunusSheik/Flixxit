@@ -82,6 +82,8 @@ export default function ListItemsMain(props) {
     }
   };
 
+  console.log("first", props);
+
   if (props.movieData.isSeries !== undefined) {
     return (
       <div
